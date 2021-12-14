@@ -47,6 +47,4 @@ describe('TU password validation', () => {
         // Assert
         expect(validation.errorMessage).toEqual("The password must contain at least 2 numbers");
     });
-
-
 });
