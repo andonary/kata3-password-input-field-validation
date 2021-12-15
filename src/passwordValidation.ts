@@ -38,10 +38,31 @@ function hasCapitalLetter(password: string) {
     return numberOfCapital > 0;
 }
 
-export function passwordValidation(password: string, errorMessage: string): IOutput {
+function notContainingCapitalLetter() {
+    return "password must contain at least one capital letter";
+}
+
+function hasSpecialCharacter(password: string) {
+    const numberOfSpecial: number = password.split("").reduce((acc, val) => {
+        if (/[A-Z0-9]/i.test(val)) return acc;
+        return acc + 1;
+    },0);
+    return numberOfSpecial > 0;
+}
+
+function notContainingSpecial() {
+    return "password must contain at least one special character";
+}
+
+export function passwordValidation(password: string): IOutput {
     if (isLongEnough(password)) {
         if (hasEnoughNumbers(password)) {
-            if (!hasCapitalLetter(password)) return makeResponse(false, "password must contain at least one capital letter")
+            if (!hasCapitalLetter(password)) {
+                if (!hasSpecialCharacter(password)) {
+                    return makeResponse(false, notContainingSpecial())
+                }
+                return makeResponse(false, notContainingCapitalLetter())
+            }
             return makeResponse(true, "");
         }
         return makeResponse(false, notContainingEnoughNumbersAndNotLongEnough());

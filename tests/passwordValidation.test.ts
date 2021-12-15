@@ -8,7 +8,7 @@ describe('TU password validation', () => {
         const isValid = false;
 
         // Act
-        const output: IOutput = passwordValidation(password, errorMessage);
+        const output: IOutput = passwordValidation(password);
 
         // Assert
         expect(output.isValid).toEqual(isValid);
@@ -18,12 +18,12 @@ describe('TU password validation', () => {
     describe('enough length', () => {
         test('it should allow a password long enough', async () => {
             // Arrange
-            const password = "Abcde123";
+            const password = "@Bcde123";
             const errorMessage = "";
             const isValid = true;
 
             // Act
-            const output: IOutput = passwordValidation(password, errorMessage);
+            const output: IOutput = passwordValidation(password);
 
             // Assert
             expect(output.isValid).toEqual(isValid);
@@ -34,12 +34,12 @@ describe('TU password validation', () => {
     describe('multiple message error', () => {
         test('it should warn me if password are several problems', async () => {
             // Arrange
-            const password = "somepassword";
+            const password = "somep@ssword";
             const errorMessage = "Password must be at least 8 characters\\nThe password must contain at least 2 numbers";
             const isValid = false;
 
             // Act
-            const output: IOutput = passwordValidation(password, errorMessage);
+            const output: IOutput = passwordValidation(password);
 
             // Assert
             expect(output.isValid).toEqual(isValid);
@@ -50,12 +50,28 @@ describe('TU password validation', () => {
     describe('capital letter', () => {
         test('it should warn me if password does not have capital letter', async () => {
             // Arrange
-            const password = "somepassw123456";
+            const password = "s@mepassw123456";
             const errorMessage = "password must contain at least one capital letter";
             const isValid = false;
 
             // Act
-            const output: IOutput = passwordValidation(password, errorMessage);
+            const output: IOutput = passwordValidation(password);
+
+            // Assert
+            expect(output.isValid).toEqual(isValid);
+            expect(output.errorMessage).toEqual(errorMessage);
+        });
+    });
+
+    describe('special character', () => {
+        test('it should warn me if password does not have special character', async () => {
+            // Arrange
+            const password = "somepassw123456";
+            const errorMessage = "password must contain at least one special character";
+            const isValid = false;
+
+            // Act
+            const output: IOutput = passwordValidation(password);
 
             // Assert
             expect(output.isValid).toEqual(isValid);
