@@ -31,23 +31,7 @@ describe('TU password validation', () => {
         });
     });
 
-    describe('enough number', () => {
-        test('it should allow a password with enough number inside', async () => {
-            // Arrange
-            const password = "abcdefg3";
-            const errorMessage = "The password must contain at least 2 numbers";
-            const isValid = false;
-
-            // Act
-            const output: IOutput = passwordValidation(password, errorMessage);
-
-            // Assert
-            expect(output.isValid).toEqual(isValid);
-            expect(output.errorMessage).toEqual(errorMessage);
-        });
-    });
-
-    xdescribe('multiple message error', () => {
+    describe('multiple message error', () => {
         test('it should warn me if password are several problems', async () => {
             // Arrange
             const password = "somepassword";
