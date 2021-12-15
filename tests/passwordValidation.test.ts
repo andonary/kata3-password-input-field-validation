@@ -18,7 +18,7 @@ describe('TU password validation', () => {
     describe('enough length', () => {
         test('it should allow a password long enough', async () => {
             // Arrange
-            const password = "abcdefgh";
+            const password = "abcde123";
             const errorMessage = "";
             const isValid = true;
 
@@ -36,6 +36,22 @@ describe('TU password validation', () => {
             // Arrange
             const password = "abcdefg3";
             const errorMessage = "The password must contain at least 2 numbers";
+            const isValid = false;
+
+            // Act
+            const output: IOutput = passwordValidation(password, errorMessage);
+
+            // Assert
+            expect(output.isValid).toEqual(isValid);
+            expect(output.errorMessage).toEqual(errorMessage);
+        });
+    });
+
+    xdescribe('multiple message error', () => {
+        test('it should warn me if password are several problems', async () => {
+            // Arrange
+            const password = "somepassword";
+            const errorMessage = "Password must be at least 8 characters\\nThe password must contain at least 2 numbers";
             const isValid = false;
 
             // Act
