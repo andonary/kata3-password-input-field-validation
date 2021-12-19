@@ -1,4 +1,4 @@
-import { IResult, Password, passwordValidation } from "../src/passwordValidation";
+import { IResult, passwordValidation } from "../src/passwordValidation";
 
 describe("Password Validation", () => {
   test.each([
@@ -109,10 +109,9 @@ describe("Password Validation", () => {
   ])("it should verify $condition: $password -> $isValid : $errorMessages", (cases) => {
     // Arrange
     const { password, isValid, errorMessages } = cases;
-    let passwordModel: Password = new Password(password);
 
     // Act
-    const result: IResult = passwordValidation(passwordModel);
+    const result: IResult = passwordValidation(password);
 
     // Assert
     expect(result.isValid).toEqual(isValid);

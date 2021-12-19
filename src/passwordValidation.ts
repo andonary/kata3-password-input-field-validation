@@ -32,7 +32,7 @@ class Validator {
   }
 }
 
-export class Password {
+class Password {
   constructor(private password: string) {}
 
   hasEnoughCharacters() {
@@ -52,8 +52,9 @@ export class Password {
   }
 }
 
-export function passwordValidation(password: Password): IResult {
+export function passwordValidation(passToCheck: string): IResult {
   const validator: Validator = new Validator();
+  const password: Password = new Password(passToCheck);
   if (!password.hasEnoughCharacters()) validator.notEnoughCharacters();
   if (!password.hasEnoughNumbers()) validator.notEnoughNumbers();
   if (!password.hasEnoughCapitals()) validator.notEnoughCapitals();
