@@ -16,7 +16,7 @@ For example, “somepassword” should an error message: “Password must be at 
 
 5. The password must contain at least one special character. If it is not met, then the following error message should be returned: “password must contain at least one special character”
 
-# Live Coding on YouTube
+# Live Coding on YouTube (in french)
 
 ## Attempt #1 on December the 13th 2021
 
