@@ -21,6 +21,8 @@ For example, “somepassword” should an error message: “Password must be at 
 ## Attempt #1 on December the 13th 2021
 
 Part 1 : https://www.youtube.com/watch?v=A99A7ucs1A4
+
 Part 2 : https://www.youtube.com/watch?v=I9KXBqQDQ6A
+
 Conclusion : https://www.youtube.com/watch?v=2MY2_bvllEE
 
