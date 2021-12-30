@@ -52,19 +52,15 @@ describe("Password Validation", () => {
       errors: "",
       password: "Ab1_2gT8",
     },
-  ])("it should: valid='$isValid', password='$password', errors='$errors'", (cases) => {
+  ])("it should: valid='$isValid', password='$password', errors='$errors'", (expected) => {
     // Arrange
-    const { password } = cases;
-    const resultExpected: ResultExpected = {
-      isValid: cases.isValid,
-      errors: cases.errors,
-    };
+    const { password } = expected;
 
     // Act
     const result: ResultExpected = passwordValidation(password);
 
     // Assert
-    expect(result.isValid).toEqual(resultExpected.isValid);
-    expect(result.errors).toEqual(resultExpected.errors);
+    expect(result.isValid).toEqual(expected.isValid);
+    expect(result.errors).toEqual(expected.errors);
   });
 });
