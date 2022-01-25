@@ -12,6 +12,6 @@ export function passwordValidation(input: string) {
   if (input.length < 8) invalidPassword(validation, "Password must be at least 8 characters");
   if (input.replaceAll(/\D/g, "").length < 2) invalidPassword(validation, "The password must contain at least 2 numbers");
   if (input.replaceAll(/[^A-Z]/g, "") === "") invalidPassword(validation, "password must contain at least one capital letter");
-  if (input.replaceAll(/[\w]/g, "") === "") invalidPassword(validation, "password must contain at least one special character");
+  if (input.replaceAll(/[-a-zA-Z0-9]/g, "") === "") invalidPassword(validation, "password must contain at least one special character");
   return validation;
 }

@@ -30,5 +30,9 @@ describe("Password validation", () => {
       isValid: false,
       message: "password must contain at least one special character",
     });
+    expect(passwordValidation("1De4_s7H")).toEqual({
+      isValid: true,
+      message: "",
+    });
   });
 });
